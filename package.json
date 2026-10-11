@@ -1,0 +1,11 @@
+{
+  "name": "rapre-media",
+  "private": true,
+  "type": "module",
+  "description": "Instagram投稿用の画像・動画と、その生成スクリプト",
+  "dependencies": {
+    "@fontsource/cormorant-garamond": "^5.0.0",
+    "@fontsource/noto-sans-jp": "^5.0.0",
+    "@fontsource/shippori-mincho": "^5.0.0"
+  }
+}
