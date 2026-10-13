@@ -46,6 +46,19 @@ for (const w of ['全て返信します', '番号でコメント']) check(!body.
 check((body.match(/？|\?|でしょうか。|ますか。/g) || []).length >= 1, '問いかけが1つ以上');
 check(typeof post.send_to === 'string' && post.send_to.length > 0, `post.json に send_to（誰に送ってもらう投稿か）：${post.send_to || 'なし'}`);
 
+// 代表がお客様へ個別に送る文（line.txt）
+const lf = path.join(dir, 'line.txt');
+if (fs.existsSync(lf)) {
+  const lt = fs.readFileSync(lf, 'utf8').trim();
+  const msg = lt.split('\n').filter(l => !l.startsWith('送る相手の目安')).join('');
+  const ln = msg.replace(/\s/g, '').length;
+  check(ln >= 60 && ln <= 160, `line.txt の本文 ${ln}字（60〜160字）`);
+  check(/送る相手の目安：/.test(lt), 'line.txt に「送る相手の目安：」の行');
+  check(/転送|送って/.test(msg), 'line.txt にご友人への転送のお願い');
+  const badL = banned.filter(w => lt.includes(w));
+  check(badL.length === 0, `line.txt に禁止表現なし${badL.length ? '：' + badL.join('、') : ''}`);
+} else check(false, 'line.txt がある');
+
 // 形式
 if ((post.format || 'carousel') === 'carousel') {
   check(Array.isArray(post.slides) && post.slides.length === 5, 'カルーセルは5枚');
