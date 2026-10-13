@@ -1,5 +1,7 @@
 // 使い方: node tools/render.mjs posts/<brand>/<slug>
-// post.json を読み、carousel/（1080×1350）、reel/（1080×1920のコマと reel.mp4）、story/ を書き出します。
+// post.json を読み、format に応じて carousel/（1080×1350の5枚）または reel/（1080×1920のコマと reel.mp4）を書き出し、
+// どちらの場合も story/story.jpg（新着のお知らせ）を書き出します。
+// format: "carousel" は slides を使う。format: "reel" は reel.frames（各コマに sec 秒）を使う。
 import { createRequire } from 'module';
 import fs from 'fs';
 import path from 'path';
@@ -78,25 +80,41 @@ async function shot(html, W, H, out, name) {
   await page.screenshot({ path: out, type: 'jpeg', quality: 95, clip: { x: 0, y: 0, width: W, height: H } });
   await page.close(); console.log('wrote', path.relative(root, out));
 }
-const n = post.slides.length;
-for (let i = 0; i < n; i++) {
-  const s = post.slides[i], label = `${pad(i + 1)} / ${pad(n)}`;
-  await shot(frame(build(s), s.kind, label, 1080, 1350, false), 1080, 1350, path.join(dir, 'carousel', `slide_${pad(i + 1)}.jpg`), `c${i + 1}`);
-  await shot(frame(build(s), s.kind, label, 1080, 1920, true), 1080, 1920, path.join(dir, 'reel', `frame_${pad(i + 1)}.jpg`), `r${i + 1}`);
-}
+const format = post.format || 'carousel';
+const pad2 = pad;
+if (format === 'carousel') {
+  const n = post.slides.length;
+  for (let i = 0; i < n; i++) {
+    const s = post.slides[i], label = `${pad(i + 1)} / ${pad(n)}`;
+    await shot(frame(build(s), s.kind, label, 1080, 1350, false), 1080, 1350, path.join(dir, 'carousel', `slide_${pad(i + 1)}.jpg`), `c${i + 1}`);
+  }
+} else if (format === 'reel') {
+  const fr = post.reel.frames;
+  for (let i = 0; i < fr.length; i++) {
+    await shot(frame(build(fr[i]), fr[i].kind, '', 1080, 1920, true), 1080, 1920, path.join(dir, 'reel', `frame_${pad(i + 1)}.jpg`), `r${i + 1}`);
+  }
+} else throw new Error('unknown format ' + format);
 const st = { kind: 'hook', ...post.story };
 await shot(frame(build(st), 'hook story', '', 1080, 1920, true), 1080, 1920, path.join(dir, 'story', 'story.jpg'), 'story');
 await browser.close();
 
-// リール動画: 各4秒、0.5秒のクロスフェード、無音の音声トラック付き
-import { execFileSync } from 'child_process';
-const D = 4, X = 0.5, total = n * D - (n - 1) * X;
-const args = ['-y', '-loglevel', 'error'];
-for (let i = 1; i <= n; i++) args.push('-loop', '1', '-t', String(D), '-framerate', '30', '-i', path.join(dir, 'reel', `frame_${pad(i)}.jpg`));
-args.push('-f', 'lavfi', '-t', String(total), '-i', 'anullsrc=channel_layout=stereo:sample_rate=48000');
-let fc = '', prev = '[0:v]';
-for (let i = 1; i < n; i++) { const o = i === n - 1 ? '[v]' : `[x${i}]`; fc += `${prev}[${i}:v]xfade=transition=fade:duration=${X}:offset=${i * (D - X)}${o};`; prev = o; }
-args.push('-filter_complex', fc.replace(/;$/, ''), '-map', '[v]', '-map', `${n}:a`, '-c:v', 'libx264', '-profile:v', 'high', '-pix_fmt', 'yuv420p', '-r', '30', '-crf', '18', '-c:a', 'aac', '-b:a', '128k', '-movflags', '+faststart', '-t', String(total), path.join(dir, 'reel', 'reel.mp4'));
-execFileSync('ffmpeg', args, { stdio: 'inherit' });
-fs.copyFileSync(path.join(dir, 'reel', 'frame_01.jpg'), path.join(dir, 'reel', 'cover.jpg'));
-console.log('wrote reel.mp4', total + 's');
+if (format === 'reel') {
+  // リール動画: 各コマ sec 秒、0.4秒のクロスフェード、1コマ目の最初から静かなズームで動きを出す。無音の音声トラック付き。
+  const { execFileSync } = await import('child_process');
+  const fr = post.reel.frames, X = 0.4;
+  const D = fr.map(f => f.sec || 3);
+  const total = D.reduce((a, b) => a + b, 0) - (fr.length - 1) * X;
+  if (total < 7 || total > 12) { console.error(`リールの長さが ${total} 秒です（7〜12秒にしてください）`); process.exitCode = 1; }
+  const args = ['-y', '-loglevel', 'error'];
+  fr.forEach((f, i) => args.push('-loop', '1', '-t', String(D[i]), '-framerate', '30', '-i', path.join(dir, 'reel', `frame_${pad2(i + 1)}.jpg`)));
+  args.push('-f', 'lavfi', '-t', String(total), '-i', 'anullsrc=channel_layout=stereo:sample_rate=48000');
+  let fc = '';
+  fr.forEach((f, i) => { fc += `[${i}:v]scale=2160:3840,zoompan=z='min(1+0.0009*on,1.03)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=1080x1920:fps=30,setsar=1[z${i}];`; });
+  let prev = '[z0]', off = 0;
+  for (let i = 1; i < fr.length; i++) { off += D[i - 1] - X; const o = i === fr.length - 1 ? '[v]' : `[x${i}]`; fc += `${prev}[z${i}]xfade=transition=fade:duration=${X}:offset=${off.toFixed(2)}${o};`; prev = o; }
+  if (fr.length === 1) fc += '[z0]null[v];';
+  args.push('-filter_complex', fc.replace(/;$/, ''), '-map', '[v]', '-map', `${fr.length}:a`, '-c:v', 'libx264', '-profile:v', 'high', '-pix_fmt', 'yuv420p', '-r', '30', '-crf', '18', '-c:a', 'aac', '-b:a', '128k', '-movflags', '+faststart', '-t', String(total), path.join(dir, 'reel', 'reel.mp4'));
+  execFileSync('ffmpeg', args, { stdio: 'inherit' });
+  fs.copyFileSync(path.join(dir, 'reel', 'frame_01.jpg'), path.join(dir, 'reel', 'cover.jpg'));
+  console.log('wrote reel.mp4', total.toFixed(1) + 's');
+}
