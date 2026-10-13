@@ -39,7 +39,7 @@ const hit = banned.filter(w => all.includes(w));
 check(hit.length === 0, `禁止表現なし${hit.length ? '：' + hit.join('、') : ''}`);
 
 // 締めの構成（紹介導線）
-for (const w of ['完全紹介制', '完全予約制', '初回カウンセリングは無料', '送ってくださった方を通して', 'DMで送']) {
+for (const w of ['完全紹介制', '完全予約制', '初回カウンセリングは無料', 'ご紹介者のお名前を添えてDMで', 'DMで送']) {
   check(body.includes(w), `必須の文言「${w}」`);
 }
 for (const w of ['全て返信します', '番号でコメント']) check(!body.includes(w), `廃止した定型文「${w}」を使っていない`);
@@ -63,17 +63,20 @@ if (fs.existsSync(lf)) {
 if ((post.format || 'carousel') === 'carousel') {
   check(Array.isArray(post.slides) && post.slides.length === 5, 'カルーセルは5枚');
   const last = post.slides?.[4];
-  check(last && last.kind === 'cta' && /紹介/.test(JSON.stringify(last)), '5枚目が紹介のご案内カード');
+  check(last && last.kind === 'cta' && /ご紹介者のお名前/.test(JSON.stringify(last)), '5枚目が紹介のご案内カード（ご紹介者のお名前を添えてDM）');
+  check(/<em>/.test(post.slides?.[0]?.title || ''), '1枚目のタイトルに強調 <em> が1か所');
 } else {
   const fr = post.reel?.frames || [];
   const total = fr.reduce((a, f) => a + (f.sec || 3), 0) - Math.max(fr.length - 1, 0) * 0.4;
   check(fr.length >= 2 && fr.length <= 4, `リールのコマ数 ${fr.length}（2〜4）`);
   check(total >= 7 && total <= 12, `リールの長さ ${total.toFixed(1)}秒（7〜12秒）`);
   check(fr[0] && fr[0].kind === 'hook', '1コマ目は結論の一文（hook）');
+  check(/<em>/.test(fr[0]?.title || ''), '1コマ目のタイトルに強調 <em> が1か所');
+  check(/ご紹介者のお名前/.test(JSON.stringify(fr[fr.length - 1] || {})), '最後のコマに紹介のご案内');
 }
 
 // 直近4回と締めの文が同じでないこと（固定の案内文は除く）
-const fixed = /(完全紹介制|初回カウンセリング|プロフィールのリンク|送ってくださった方を通して)/;
+const fixed = /(完全紹介制|初回カウンセリング|プロフィールのリンク|ご紹介者のお名前)/;
 const root = path.dirname(dir);
 const prev = fs.readdirSync(root).filter(f => f < path.basename(dir)).sort().slice(-4)
   .map(f => path.join(root, f, 'caption.txt')).filter(f => fs.existsSync(f)).map(f => fs.readFileSync(f, 'utf8'));
