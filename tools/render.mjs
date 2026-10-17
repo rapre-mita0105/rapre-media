@@ -1,7 +1,7 @@
 // 使い方: node tools/render.mjs posts/<brand>/<slug>
 // post.json を読み、format に応じて carousel/（1080×1350の5枚）または reel/（1080×1920のコマと reel.mp4）を書き出し、
 // どちらの場合も story/story.jpg（新着のお知らせ）を書き出します。
-// format: "carousel" は slides を使う。format: "reel" は reel.frames（各コマに sec 秒）を使う。
+// format: "carousel" は slides を使う。format: "reel" と "trial_reel" は reel.frames（各コマに sec 秒）を使う。
 import { createRequire } from 'module';
 import fs from 'fs';
 import path from 'path';
@@ -107,13 +107,14 @@ async function shot(html, W, H, out, name) {
 }
 const format = post.format || 'carousel';
 const pad2 = pad;
+const isReel = format === 'reel' || format === 'trial_reel';
 if (format === 'carousel') {
   const n = post.slides.length;
   for (let i = 0; i < n; i++) {
     const s = post.slides[i], label = `${pad(i + 1)} / ${pad(n)}`;
     await shot(frame(build(s), s.kind, label, 1080, 1350, false), 1080, 1350, path.join(dir, 'carousel', `slide_${pad(i + 1)}.jpg`), `c${i + 1}`);
   }
-} else if (format === 'reel') {
+} else if (isReel) {
   const fr = post.reel.frames;
   for (let i = 0; i < fr.length; i++) {
     await shot(frame(build(fr[i]), fr[i].kind, '', 1080, 1920, true), 1080, 1920, path.join(dir, 'reel', `frame_${pad(i + 1)}.jpg`), `r${i + 1}`);
@@ -123,7 +124,7 @@ const st = { kind: 'hook', ...post.story };
 await shot(frame(build(st), 'hook story', '', 1080, 1920, true), 1080, 1920, path.join(dir, 'story', 'story.jpg'), 'story');
 await browser.close();
 
-if (format === 'reel') {
+if (isReel) {
   // リール動画: 各コマ sec 秒、0.4秒のクロスフェード、1コマ目の最初から静かなズームで動きを出す。無音の音声トラック付き。
   const { execFileSync } = await import('child_process');
   const fr = post.reel.frames, X = 0.4;

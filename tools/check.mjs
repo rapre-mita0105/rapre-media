@@ -38,13 +38,16 @@ const banned = ['治る', '治す', '改善', '効果がある', '効果的', '�
 const hit = banned.filter(w => all.includes(w));
 check(hit.length === 0, `禁止表現なし${hit.length ? '：' + hit.join('、') : ''}`);
 
-// 締めの構成（紹介導線）
-for (const w of ['完全紹介制', '完全予約制', '初回カウンセリングは無料', 'ご紹介者のお名前を添えてDMで', 'DMで送']) {
+// 締めの構成（保存・DM送付・フォロー・紹介制の一文）2026-10-18改定
+const fmt = post.format || 'carousel';
+for (const w of ['完全紹介制', 'DMで送', 'フォロー', '保存']) {
   check(body.includes(w), `必須の文言「${w}」`);
 }
 for (const w of ['全て返信します', '番号でコメント']) check(!body.includes(w), `廃止した定型文「${w}」を使っていない`);
 check((body.match(/？|\?|でしょうか。|ますか。/g) || []).length >= 1, '問いかけが1つ以上');
 check(typeof post.send_to === 'string' && post.send_to.length > 0, `post.json に send_to（誰に送ってもらう投稿か）：${post.send_to || 'なし'}`);
+check(typeof post.keyword === 'string' && post.keyword.length > 0, `post.json に keyword（検索キーワード）：${post.keyword || 'なし'}`);
+check(!!post.keyword && body.replace(/\s/g, '').slice(0, 80).includes(post.keyword.replace(/\s/g, '')), 'キャプションの最初の80字以内にキーワード');
 
 // 代表がお客様へ個別に送る文（line.txt）
 const lf = path.join(dir, 'line.txt');
@@ -57,13 +60,15 @@ if (fs.existsSync(lf)) {
   check(/転送|送って/.test(msg), 'line.txt にご友人への転送のお願い');
   const badL = banned.filter(w => lt.includes(w));
   check(badL.length === 0, `line.txt に禁止表現なし${badL.length ? '：' + badL.join('、') : ''}`);
-} else check(false, 'line.txt がある');
+} else check(fmt === 'trial_reel', 'line.txt がある（トライアルリールは不要）');
 
 // 形式
-if ((post.format || 'carousel') === 'carousel') {
+check(post.brand === 'RAPRE', `post.json に brand "RAPRE"：${post.brand || 'なし'}`);
+const followCard = x => !!x && x.kind === 'cta' && /フォロー/.test(JSON.stringify(x)) && /保存/.test(JSON.stringify(x));
+check(['carousel', 'reel', 'trial_reel'].includes(fmt), `format が carousel / reel / trial_reel のいずれか：${fmt}`);
+if (fmt === 'carousel') {
   check(Array.isArray(post.slides) && post.slides.length === 5, 'カルーセルは5枚');
-  const last = post.slides?.[4];
-  check(last && last.kind === 'cta' && /ご紹介者のお名前/.test(JSON.stringify(last)), '5枚目が紹介のご案内カード（ご紹介者のお名前を添えてDM）');
+  check(followCard(post.slides?.[4]), '5枚目が保存とフォローのカード');
   check(/<em>/.test(post.slides?.[0]?.title || ''), '1枚目のタイトルに強調 <em> が1か所');
 } else {
   const fr = post.reel?.frames || [];
@@ -72,11 +77,17 @@ if ((post.format || 'carousel') === 'carousel') {
   check(total >= 7 && total <= 12, `リールの長さ ${total.toFixed(1)}秒（7〜12秒）`);
   check(fr[0] && fr[0].kind === 'hook', '1コマ目は結論の一文（hook）');
   check(/<em>/.test(fr[0]?.title || ''), '1コマ目のタイトルに強調 <em> が1か所');
-  check(/ご紹介者のお名前/.test(JSON.stringify(fr[fr.length - 1] || {})), '最後のコマに紹介のご案内');
+  check(followCard(fr[fr.length - 1]), '最後のコマが保存とフォローのカード');
+}
+if (fmt === 'trial_reel') {
+  check(typeof post.reminder_of === 'string' && post.reminder_of.length > 0, `post.json に reminder_of（保存版リマインドの元の投稿）：${post.reminder_of || 'なし'}`);
+  check(post.story?.eyebrow === 'SAVE', '金曜のストーリーズは保存版リマインド（eyebrow SAVE）');
+} else {
+  check(post.story?.eyebrow === 'NEW POST', 'ストーリーズは新着のお知らせ（eyebrow NEW POST）');
 }
 
 // 直近4回と締めの文が同じでないこと（固定の案内文は除く）
-const fixed = /(完全紹介制|初回カウンセリング|プロフィールのリンク|ご紹介者のお名前)/;
+const fixed = /(完全紹介制|初回カウンセリング|プロフィールのリンク|ご紹介者のお名前|フォローしてお待ちください)/;
 const root = path.dirname(dir);
 const prev = fs.readdirSync(root).filter(f => f < path.basename(dir)).sort().slice(-4)
   .map(f => path.join(root, f, 'caption.txt')).filter(f => fs.existsSync(f)).map(f => fs.readFileSync(f, 'utf8'));
