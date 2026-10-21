@@ -54,17 +54,17 @@
     {
       "slot": "2026-10-22T20:00:00+09:00",
       "category": "健康",
-      "theme": "座りっぱなしを20分ごとに2分の歩行で区切ると食後の血糖・インスリン反応が低い",
-      "evidence": "Dunstan DW, Kingwell BA, Larsen R, et al. Breaking up prolonged sitting reduces postprandial glucose and insulin responses. Diabetes Care 2012;35(5):976-83. doi:10.2337/dc11-1931（ACU研究リポジトリの全文PDFで確認：45〜65歳の過体重・肥満成人19名〈男11・女8〉、ランダム化クロスオーバー、1日のみ。軽い歩行3.2km/hで血糖iAUC −24.1%、インスリン −23%）",
-      "folder": "posts/rapre/2026-10-22_sitting",
+      "theme": "週に120分以上、自然の中で過ごす時間と、健康・満たされている感覚（1回でも分けても同じ傾向）",
+      "evidence": "White MP, Alcock I, Grellier J, et al. Spending at least 120 minutes a week in nature is associated with good health and wellbeing. Sci Rep 2019（s41598-019-44097-3。nature.com本文で確認：英国MENE調査 約2万人、横断研究、女性・男性／65歳以上・未満で同傾向、分け方で差なし、因果は不明）",
+      "folder": "posts/rapre/2026-10-22_nature",
       "format": "reel+story",
-      "send_to": "昼食のあとも座ったまま、夕方まで画面に向かっている同僚や友人",
-      "keyword": "座りっぱなし",
+      "send_to": "平日の疲れから、週末はつい家で過ごしがちな友人",
+      "keyword": "週末の過ごし方",
       "metricool_ids": [
         402003321,
         402003532
       ],
-      "note": "2026-10-21の実行で予約2件（REEL・STORY、20:00、autoPublish、draftではない）を読み戻しで確認。"
+      "note": "2026-10-21夜、代表の依頼で作り直し（旧案：座りっぱなしと食後の血糖。医療寄り・対象者が合わない・言葉と見た目が弱い、との判断）。Metricoolの同じ予約2件を差し替え。"
     }
   ],
   "past_themes_before_automation": {
