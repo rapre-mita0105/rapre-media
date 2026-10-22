@@ -1,0 +1,56 @@
+{
+  "format": "trial_reel",
+  "brand": "RAPRE",
+  "send_to": "「最近、脚が弱くなった気がする」と話していた同年代の友人",
+  "keyword": "筋肉量",
+  "category": "カラダ図鑑 / BODY NOTE",
+  "slot": "2026-10-23T20:00:00+09:00",
+  "reminder_of": "2026-10-19_posture",
+  "reel": {
+    "frames": [
+      {
+        "kind": "hook",
+        "sec": 3.2,
+        "eyebrow": "40代のカラダ図鑑",
+        "title": "筋肉が<br>減るのは<br>主に<em>下半身</em>。",
+        "sub": "目立ちはじめるのは40代の終わりごろ"
+      },
+      {
+        "kind": "evidence",
+        "sec": 4.4,
+        "eyebrow": "EVIDENCE",
+        "title": "研究で報告されていること",
+        "items": [
+          {
+            "head": "18〜88歳の男女468人をMRIで測定",
+            "text": "筋肉の量がはっきり減るのは<br>40代の終わりごろから",
+            "src": "Janssen ほか 2000／J Appl Physiol"
+          },
+          {
+            "head": "減っていたのは主に下半身",
+            "text": "上半身よりも<br>下半身の筋肉で目立った",
+            "src": "同じ研究"
+          }
+        ],
+        "note": "年代の異なる人を比べた研究です。<br>同じ人を追いかけた結果ではありません。"
+      },
+      {
+        "kind": "cta",
+        "sec": 3.0,
+        "eyebrow": "SAVE & FOLLOW",
+        "title": "脚が弱ったと<br>話していた<br>あの方へ。",
+        "tags": [
+          "保存して見返す",
+          "DMで送る",
+          "フォローする"
+        ],
+        "sub": "40代のカラダとお肌の仕組みを<br>毎週お届けしています"
+      }
+    ]
+  },
+  "story": {
+    "eyebrow": "SAVE",
+    "title": "最近、<br><em>呼吸が浅い</em><br>気がする。",
+    "sub": "月曜の投稿を、保存版として<br>プロフィールからご覧ください"
+  }
+}
