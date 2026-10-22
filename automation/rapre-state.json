@@ -126,7 +126,21 @@
       "note": "代表から伝えられた紹介でのお問い合わせ・ご来店の数だけを記録する。2026-10-13時点で記録なし。"
     }
   ],
-  "next_trial_slot": "2026-10-23T20:00:00+09:00",
+  "next_trial_slot": "2026-10-30T20:00:00+09:00",
   "discovery_series": "40代のカラダ図鑑 / BODY NOTE（金曜トライアルリール。6カテゴリーの順番とは別枠）",
-  "discovery_log": []
+  "discovery_log": [
+    {
+      "slot": "2026-10-23T20:00:00+09:00",
+      "format": "trial_reel+story（保存版リマインド：2026-10-19_posture）",
+      "theme": "筋肉の量がはっきり減りはじめるのは40代の終わりごろで、主に下半身",
+      "send_to": "「最近、脚が弱くなった気がする」と話していた同年代の友人",
+      "keyword": "筋肉量",
+      "evidence": "Janssen I, Heymsfield SB, Wang ZM, Ross R. Skeletal muscle mass and distribution in 468 men and women aged 18-88 yr. J Appl Physiol 2000;89:81-88（PMID 10904038。抄録をBioblast/MitoFitの転載で確認：全身MRI、男女468人、絶対量の目立つ減少は50歳前後（fifth decadeの終わり）から、主に下半身。年代の異なる人を比べた研究で縦断ではない。PubMed本体と出版社ページは取得できず）",
+      "folder": "posts/rapre/2026-10-23_muscle",
+      "metricool_ids": [
+        403022716,
+        403022744
+      ]
+    }
+  ]
 }
