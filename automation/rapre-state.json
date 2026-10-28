@@ -12,8 +12,8 @@
     "木曜 20:00 リール＋ストーリーズ（新着）",
     "金曜 20:00 トライアルリール「40代のカラダ図鑑」＋ストーリーズ（月曜投稿の保存版リマインド）"
   ],
-  "next_index": 5,
-  "next_slot": "2026-10-29T20:00:00+09:00",
+  "next_index": 0,
+  "next_slot": "2026-11-02T20:00:00+09:00",
   "prepared": [],
   "log": [
     {
@@ -78,6 +78,20 @@
       "metricool_ids": [
         405589212,
         405589226
+      ]
+    },
+    {
+      "slot": "2026-10-29T20:00:00+09:00",
+      "category": "カラダの不調",
+      "theme": "女性の自覚症状で最も多い肩こりと、1日2分・週5日・10週間の筋力トレーニングで首や肩の痛みの程度が下がったという報告",
+      "evidence": "厚生労働省「2019年 国民生活基礎調査の概況」（k-tyosa19/dl/04.pdf 本文で確認：女の有訴者率は「肩こり」が最も高く、次いで「腰痛」「手足の関節が痛む」）／Andersen LL, Saervoll CA, Mortensen OS, Poulsen OM, Hannerz H, Zebis MK. Effectiveness of small daily amounts of progressive resistance training for frequent neck/shoulder pain: randomised controlled trial. Pain 2011;152(2):440-446（PMID 21177034。PEDroの記録とucviden.dkの抄録で確認：週30時間以上働く首・肩の痛みがよくある成人198人（女性174人）、ゴムチューブの漸増抵抗トレーニング1日2分または12分・週5日・10週間、対照は週1回の健康情報。痛み0-10で2分群−1.4、12分群−1.9、圧痛も低下。種目の詳細と長期経過は未確認）",
+      "folder": "posts/rapre/2026-10-29_shoulder",
+      "format": "reel+story",
+      "send_to": "「肩こりは昔からだから」と、あきらめ気味に話す友人",
+      "keyword": "肩こり",
+      "metricool_ids": [
+        408801389,
+        408801434
       ]
     }
   ],
