@@ -209,7 +209,7 @@
       "note": "代表から伝えられた紹介でのお問い合わせ・ご来店の数だけを記録する。2026-10-13時点で記録なし。"
     }
   ],
-  "next_trial_slot": "2026-10-30T20:00:00+09:00",
+  "next_trial_slot": "2026-11-06T20:00:00+09:00",
   "discovery_series": "40代のカラダ図鑑 / BODY NOTE（金曜トライアルリール。6カテゴリーの順番とは別枠）",
   "discovery_log": [
     {
@@ -223,6 +223,19 @@
       "metricool_ids": [
         403022716,
         403022744
+      ]
+    },
+    {
+      "slot": "2026-10-30T20:00:00+09:00",
+      "format": "trial_reel+story（保存版リマインド：2026-10-26_calcium）",
+      "theme": "1日に使うエネルギー（代謝）は、カラダの大きさや筋肉などの量をそろえて比べると20〜60歳でほぼ一定で、ゆるやかに下がるのは60歳以降",
+      "send_to": "「40代になって代謝が落ちたから」と話す同年代の友人",
+      "keyword": "代謝",
+      "evidence": "Pontzer H, Yamada Y, Sagayama H, et al.; IAEA DLW Database Consortium. Daily energy expenditure through the human life course. Science 2021;373(6556). doi:10.1126/science.abe5017（LJMU Research Onlineの書誌・抄録で確認：二重標識水法による1日の総エネルギー消費、生後8日〜95歳の男女、除脂肪量で調整すると20〜60歳で安定し60歳以降に低下。29か国・60歳以降は年0.7%程度の低下はGEN（Genetic Engineering & Biotechnology News）の記事で確認。参加者数は資料間で表記が異なるため投稿に載せず。横断データで、除脂肪量を調整した値である点を明記）",
+      "folder": "posts/rapre/2026-10-30_metabolism",
+      "metricool_ids": [
+        409929766,
+        409929789
       ]
     }
   ]
