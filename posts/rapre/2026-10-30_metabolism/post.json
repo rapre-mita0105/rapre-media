@@ -1,0 +1,52 @@
+{
+  "format": "trial_reel",
+  "brand": "RAPRE",
+  "send_to": "「40代になって代謝が落ちたから」と話す同年代の友人",
+  "keyword": "代謝",
+  "category": "カラダ図鑑 / BODY NOTE",
+  "slot": "2026-10-30T20:00:00+09:00",
+  "reminder_of": "2026-10-26_calcium",
+  "reel": {
+    "frames": [
+      {
+        "kind": "hook",
+        "sec": 3.2,
+        "eyebrow": "40代のカラダ図鑑",
+        "title": "代謝は<br>60歳まで<br><em>ほぼ横ばい</em>。",
+        "sub": "カラダの大きさをそろえて比べると"
+      },
+      {
+        "kind": "evidence",
+        "sec": 4.4,
+        "eyebrow": "EVIDENCE",
+        "title": "研究で報告されていること",
+        "items": [
+          {
+            "head": "29か国・生後1週〜95歳のデータ",
+            "text": "1日に使うエネルギーは<br>20〜60歳でほぼ一定",
+            "src": "Pontzer ほか 2021／Science"
+          },
+          {
+            "head": "ゆるやかに下がるのは60歳以降",
+            "text": "筋肉などの量をそろえて<br>比べた場合の結果",
+            "src": "同じ研究"
+          }
+        ],
+        "note": "筋肉の量が減れば、使うエネルギーも減ります。<br>個人差もあります。"
+      },
+      {
+        "kind": "cta",
+        "sec": 3.0,
+        "eyebrow": "SAVE & FOLLOW",
+        "title": "代謝のせいと<br>話していた<br>あの方へ。",
+        "tags": ["保存して見返す", "DMで送る", "フォローする"],
+        "sub": "40代のカラダとお肌の仕組みを<br>毎週お届けしています"
+      }
+    ]
+  },
+  "story": {
+    "eyebrow": "SAVE",
+    "title": "カルシウム、<br><em>足りて</em><br>いますか。",
+    "sub": "月曜の投稿を、保存版として<br>プロフィールからご覧ください"
+  }
+}
