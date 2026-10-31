@@ -201,6 +201,67 @@
           "avg_watch_sec": 3.5
         }
       }
+    },
+    {
+      "recorded": "2026-10-31",
+      "period": "2026-10-24〜10-31朝（週報 automation/weekly-reports/2026-10-31.md）",
+      "publish_failures": "10-26カルーセル＋ストーリーズ ERROR（Instagram was disconnected）。10-29リールは未公開で10-31 20:00に再予約（PENDING）。10-30ストーリーズ ERROR（media cannot be found）。",
+      "followers": {
+        "start_10_23": 285,
+        "latest_10_29": 283,
+        "gained": 0,
+        "lost": 2
+      },
+      "posts": [
+        {
+          "slot": "2026-10-30 20:04",
+          "format": "trial_reel",
+          "reach": 12,
+          "saved": 0,
+          "shares": 0,
+          "comments": 0,
+          "view_rate_3s": "8.3%",
+          "avg_watch_sec": 1.2,
+          "duration_sec": 9.8,
+          "follows": "取得不可",
+          "note": "公開後約13時間の値"
+        },
+        {
+          "slot": "2026-10-30 13:37",
+          "format": "carousel",
+          "note": "制作外（代表の化粧品案内と見られる）。比較対象外",
+          "reach": 14,
+          "saved": 0,
+          "shares": "取得不可(null)",
+          "comments": 0,
+          "follows": 0
+        }
+      ],
+      "prev_week_7day_values": {
+        "2026-10-19 carousel": {
+          "reach": 27,
+          "saved": 0,
+          "comments": 0,
+          "likes": 2
+        },
+        "2026-10-22 reel": {
+          "reach": 24,
+          "saved": 0,
+          "shares": 0,
+          "comments": 0,
+          "view_rate_3s": "29.2%",
+          "avg_watch_sec": 4.7
+        },
+        "2026-10-23 trial_reel": {
+          "reach": 9,
+          "saved": 0,
+          "shares": 0,
+          "comments": 0,
+          "view_rate_3s": "22.2%",
+          "avg_watch_sec": 3.0
+        }
+      },
+      "stories": "10-24〜10-31の公開0件。参考：IGEV18で10-23のストーリーズのリーチ24"
     }
   ],
   "rule_change": "2026-10-13: 紹介を増やす構成へ。月曜20:00カルーセル／木曜20:00リール（7〜12秒）、各ストーリーズは新着のお知らせのみ。タグは主題4＋#ボディチューニング。締めは問い1つ・保存・DM送付・紹介のご案内。2026-11-12頃（8本後）に時刻と型を見直す。 ／2026-10-13追記: 紹介の受け方を「ご紹介者のお名前を添えてDM」に変更。配色をゴールドとホワイトに変更。フォロワー中のお客様は約3割（代表談）のため、line.txt での個別送付を紹介の主な起点とする。 ／2026-10-18: 目的をフォロワー増加とエンゲージメント向上に変更（新規集客は紹介のみ）。7人体制（制作は1回の実行内の工程、分析は土曜の週次分析）。最後のスライド・コマを保存とフォローのカードへ変更、紹介制はキャプション末尾の1文に。金曜20:00にトライアルリールを追加。post.json に keyword（キャプション冒頭80字以内）と brand を必須化。数値の取得は週次分析が担当。",
