@@ -12,8 +12,8 @@
     "木曜 20:00 リール＋ストーリーズ（新着）",
     "金曜 20:00 トライアルリール「40代のカラダ図鑑」＋ストーリーズ（月曜投稿の保存版リマインド）"
   ],
-  "next_index": 0,
-  "next_slot": "2026-11-02T20:00:00+09:00",
+  "next_index": 1,
+  "next_slot": "2026-11-05T20:00:00+09:00",
   "prepared": [],
   "log": [
     {
@@ -92,6 +92,20 @@
       "metricool_ids": [
         408801389,
         408801434
+      ]
+    },
+    {
+      "slot": "2026-11-02T20:00:00+09:00",
+      "category": "美肌",
+      "theme": "冬は夏よりも、洗浄成分へのお肌の反応が大きく、気温の低さと空気中の水分の少なさが強く関わっていた（何もしていないときの水分蒸発量は季節差ほぼなし）",
+      "evidence": "Löffler H, Happle R. Influence of climatic conditions on the irritant patch test with sodium lauryl sulphate. Acta Derm Venereol 2003;83:338-341（medicaljournals.se のPDF本文で確認：18〜60歳の487人〈女性281〉、2000年1月〜2001年12月、前腕に0.5% SLSを48時間貼付しΔTEWLを測定。気温・水蒸気圧・絶対/相対湿度がΔTEWLと相関、冬は夏より反応が大きい、主因は低い環境湿度と結論、相対湿度の寄与は小さい、基礎TEWLに季節差ほぼなし。観察研究・腕のみ・アトピー除外・気象は16km先の観測所）／室内湿度40%の目安：建築物環境衛生管理基準の相対湿度40%以上70%以下（国立保健医療科学院 本間義規 令和7年2月7日 研修資料 mhlw.go.jp/content/10900000/001394369.pdf で確認）",
+      "folder": "posts/rapre/2026-11-02_winterskin",
+      "format": "carousel+story",
+      "send_to": "「冬になると、洗顔のあとにお肌がつっぱる」と話す同年代の友人",
+      "keyword": "冬の乾燥",
+      "metricool_ids": [
+        412820082,
+        412820093
       ]
     }
   ],
