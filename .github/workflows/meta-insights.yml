@@ -1,0 +1,36 @@
+# Instagram・Facebookページの数値の取得（Meta Graph API・無料）
+# 有効にするには Variables に META_INSIGHTS_ENABLED = true を作る。
+name: meta-insights
+on:
+  schedule:
+    - cron: '30 23 * * *'   # 毎日 08:30 JST（ストーリーズは24時間で数値が消えるため毎日取る）
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: meta-insights
+jobs:
+  insights:
+    if: vars.META_INSIGHTS_ENABLED == 'true' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: 取得
+        env:
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+        run: node tools/meta/insights.mjs --days 14
+      - name: 保存
+        run: |
+          git config user.name "rapre-bot"
+          git config user.email "rapre-bot@users.noreply.github.com"
+          git add automation/insights
+          if ! git diff --cached --quiet; then
+            git commit -m "数値 $(TZ=Asia/Tokyo date +%F)"
+            git pull --rebase && git push
+          fi

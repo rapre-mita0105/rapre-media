@@ -1,0 +1,18 @@
+# トークンの確認（手動で実行。投稿も数値の保存もしない）
+name: meta-check
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: 確認
+        env:
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+        run: node tools/meta/check.mjs

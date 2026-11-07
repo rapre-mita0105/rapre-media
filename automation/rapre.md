@@ -130,6 +130,8 @@
    - 3日とも: ストーリーズ providers=[instagram, facebook]、instagramData.type=STORY、facebookData.type=STORY、media=story/story.jpg、text は送らない
    すべて autoPublish=true。同じ枠に既に予約がある場合は重複して作らない。下書き（draft）の予約は数えない。
    Facebookだけが予約エラーになった場合は、Instagramのみで予約し直し、その旨を最終報告に書く（Instagramの公開を優先する）。
+   Graph API（GitHub Actions の meta-publish、手順は automation/meta-setup.md）での公開は、代表が「Graph APIの公開に切り替え」と伝えるまで使わない。
+   切り替え後は Metricool に予約せず、フォルダを push するだけで、公開時刻に meta-publish が出す（このとき 3.〜4. は行わない）。
 4. 予約を読み戻して2件あること、月曜・木曜とストーリーズの providers に instagram と facebook の両方があることを確認する。
 5. 月曜・木曜の枠は、最終報告の最後に line.txt の全文をそのまま載せる（代表が公開後にコピーして使う）。
 6. automation/rapre-state.json を更新して push する。
@@ -138,6 +140,7 @@
 
 ## 8. 振り返り
 - 数値の取得と分析は、週次分析の実行（アナリスト）が行い、automation/weekly-reports/<日付>.md と state の metrics に書く。
+  automation/insights/<日付>.json（GitHub Actions の meta-insights が毎朝保存）がある場合は、Metricoolで取れない指標（投稿ごとのフォロー、フォロワー／非フォロワー別のリーチ、カルーセルのシェア、ストーリーズ）をそこから読む。
   2026-11-07以降は、Facebookページの数値（Metricool の facebook のうち取得できるもの：フォロワー、投稿・リールのリーチ、反応）も同じ週報に別の表で載せる。取得できない指標は「取得不可」と書く。
 - 制作の実行は、最新の週報を読み、最終報告に直近の数値を2〜3行で引用する。数値を自分で取得し直さない。
 - 紹介の数（紹介でのお問い合わせ・ご来店）はInstagramの数値では取れない。代表から伝えられた分だけ state の referrals に記録し、推測で書かない。

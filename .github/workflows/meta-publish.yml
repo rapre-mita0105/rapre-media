@@ -1,0 +1,53 @@
+# Instagram・Facebookページへの公開（Meta Graph API・無料）
+# 有効にするには、リポジトリの Settings > Secrets and variables > Actions の Variables に
+#   META_PUBLISH_ENABLED = true
+# を作る。それまでは何もしない（Metricoolとの二重投稿を防ぐため）。
+name: meta-publish
+on:
+  schedule:
+    - cron: '55 10 * * *'   # 毎日 19:55 JST（公開時刻を迎えたフォルダだけを出す）
+    - cron: '25 11 * * *'   # 20:25 JST（1回目が遅れた・失敗したときの予備。公開済みは出さない）
+  workflow_dispatch:
+    inputs:
+      folder:
+        description: '特定のフォルダを今すぐ公開（例 posts/rapre/2026-11-09_xxx）。空なら公開時刻を迎えたものだけ'
+        required: false
+      dry_run:
+        description: 'true なら公開せずに予定だけ表示'
+        required: false
+        default: 'false'
+permissions:
+  contents: write
+concurrency:
+  group: meta-publish
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: vars.META_PUBLISH_ENABLED == 'true' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: 公開
+        env:
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+        run: |
+          ARGS="--due"
+          if [ -n "${{ github.event.inputs.folder }}" ]; then ARGS="${{ github.event.inputs.folder }}"; fi
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then ARGS="$ARGS --dry-run"; fi
+          node tools/meta/publish.mjs $ARGS
+      - name: 公開記録を保存
+        if: always()
+        run: |
+          git config user.name "rapre-bot"
+          git config user.email "rapre-bot@users.noreply.github.com"
+          git add posts/rapre/*/published.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "公開記録 $(TZ=Asia/Tokyo date +%F_%H:%M)"
+            git pull --rebase && git push
+          fi
