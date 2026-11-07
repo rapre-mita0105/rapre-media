@@ -1,7 +1,7 @@
 # Rapre Instagram 自動投稿 手順書
 
 この手順書は、無人の定期実行が毎回読み、次の投稿枠1回分を生成・予約するためのものです。
-（2026-10-13改定：紹介を増やす構成へ／2026-10-18改定：フォロワー増加とエンゲージメント向上を目的とする「7人体制」へ）
+（2026-10-13改定：紹介を増やす構成へ／2026-10-18改定：フォロワー増加とエンゲージメント向上を目的とする「7人体制」へ／2026-11-07改定：Facebookページへの同時投稿を追加）
 
 ## 0. このアカウントの目的
 - Rapreは完全紹介制。新規のお客様は紹介のみで、Instagramに新規集客の役割は求めない。
@@ -121,12 +121,16 @@
    https://raw.githubusercontent.com/rapre-mita0105/rapre-media/main/posts/rapre/<フォルダ>/...
    取得できること（HTTP 200）を確認する。
 3. Metricool（ブランドID 7099534、タイムゾーン Asia/Tokyo）に同時刻で2件予約する。
-   - 月曜: 通常投稿 instagramData.type=POST、media=carousel/slide_01〜05.jpg、text=caption.txt 全文
-   - 木曜: リール type=REEL、media=reel/reel.mp4、videoThumbnailUrl=reel/cover.jpg、text=caption.txt 全文
-   - 金曜: トライアルリール type=TRIAL_REEL、media=reel/reel.mp4、videoThumbnailUrl=reel/cover.jpg、text=caption.txt 全文
-   - 3日とも: ストーリーズ type=STORY、media=story/story.jpg、text は送らない
+   Instagram（@rapre_official）と Facebookページ（Metricoolに接続済み、ID 101916651284095）へ、1件の予約で同時に出す（2026-11-07 代表の指示）。
+   予約は Meta の公式の仕組みを通るため、Meta Business Suite の予定・投稿一覧にも表示される。
+   - 月曜: 通常投稿 providers=[instagram, facebook]、instagramData.type=POST、facebookData.type=POST、media=carousel/slide_01〜05.jpg、text=caption.txt 全文
+   - 木曜: リール providers=[instagram, facebook]、instagramData.type=REEL、facebookData.type=REEL、media=reel/reel.mp4、videoThumbnailUrl=reel/cover.jpg、text=caption.txt 全文
+   - 金曜: トライアルリール providers=[instagram] のみ、type=TRIAL_REEL、media=reel/reel.mp4、videoThumbnailUrl=reel/cover.jpg、text=caption.txt 全文
+     （トライアルリールはInstagram独自の形式のため、Facebookには出さない）
+   - 3日とも: ストーリーズ providers=[instagram, facebook]、instagramData.type=STORY、facebookData.type=STORY、media=story/story.jpg、text は送らない
    すべて autoPublish=true。同じ枠に既に予約がある場合は重複して作らない。下書き（draft）の予約は数えない。
-4. 予約を読み戻して2件あることを確認する。
+   Facebookだけが予約エラーになった場合は、Instagramのみで予約し直し、その旨を最終報告に書く（Instagramの公開を優先する）。
+4. 予約を読み戻して2件あること、月曜・木曜とストーリーズの providers に instagram と facebook の両方があることを確認する。
 5. 月曜・木曜の枠は、最終報告の最後に line.txt の全文をそのまま載せる（代表が公開後にコピーして使う）。
 6. automation/rapre-state.json を更新して push する。
    - 月曜・木曜：next_index と next_slot を進め、log に日付・形式・カテゴリー・テーマ・send_to・keyword・根拠を追記する。
@@ -134,6 +138,7 @@
 
 ## 8. 振り返り
 - 数値の取得と分析は、週次分析の実行（アナリスト）が行い、automation/weekly-reports/<日付>.md と state の metrics に書く。
+  2026-11-07以降は、Facebookページの数値（Metricool の facebook のうち取得できるもの：フォロワー、投稿・リールのリーチ、反応）も同じ週報に別の表で載せる。取得できない指標は「取得不可」と書く。
 - 制作の実行は、最新の週報を読み、最終報告に直近の数値を2〜3行で引用する。数値を自分で取得し直さない。
 - 紹介の数（紹介でのお問い合わせ・ご来店）はInstagramの数値では取れない。代表から伝えられた分だけ state の referrals に記録し、推測で書かない。
 - 手順書の変更は代表の判断で行う。週次分析の提案は automation/proposals.md に書かれ、代表が「採用」と伝えたものだけが反映される。
