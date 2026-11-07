@@ -14,7 +14,25 @@
   ],
   "next_index": 2,
   "next_slot": "2026-11-09T20:00:00+09:00",
-  "prepared": [],
+  "prepared": [
+    {
+      "slot": "2026-11-09T20:00:00+09:00",
+      "status": "予約済み",
+      "prepared_at": "2026-11-07（土）代表の指示で前倒し制作",
+      "category": "姿勢",
+      "theme": "背すじを伸ばして座った人は、背中を丸めて座った人より、人前でのスピーチ課題で自己評価と気分が高く恐れが少なかった（姿勢と気持ちの関係。10-19の呼吸・過去の骨盤/頭の重さ/股関節とは別の切り口）",
+      "evidence": "Nair S, Sagar M, Sollers J 3rd, Consedine N, Broadbent E. Do slumped and upright postures affect stress responses? A randomized trial. Health Psychol 2015;34(6):632-641. doi:10.1037/hea0000146（PMID 25222091。qigonginstitute.org の抄録転載で確認：74人を背すじを伸ばす／丸める座位に無作為割付、理学療法用テープで保持、カバーストーリーあり、読み課題とTrierの社会的ストレス・スピーチ課題。伸ばした群で自己評価・覚醒・気分が高く恐れが少ない、丸めた群でスピーチの否定的感情語と一人称単数が多い。伸ばした群は脈圧が高い。PubMed本体は取得できず、参加者の性別・年齢・国の詳細は抄録で未確認〈ニュージーランドは著者所属のAuckland大学の記録による〉。PubPeerにコメントがあるが内容は読めず未確認）",
+      "folder": "posts/rapre/2026-11-09_uprightposture",
+      "format": "carousel+story",
+      "send_to": "大事な打ち合わせや発表の前に、緊張しやすい同年代の友人",
+      "keyword": "猫背",
+      "metricool_ids": [
+        419817747,
+        419817755
+      ],
+      "note": "日曜の実行は、Metricoolで2件（通常投稿・ストーリーズ、20:00、draftではない）を確認したら、この内容を log に移して prepared から外し、next_index=3（健康）、next_slot=2026-11-12T20:00:00+09:00 に進める。新規生成・再予約はしない。"
+    }
+  ],
   "log": [
     {
       "slot": "2026-10-12T08:00:00+09:00",
