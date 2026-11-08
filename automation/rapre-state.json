@@ -12,27 +12,9 @@
     "木曜 20:00 リール＋ストーリーズ（新着）",
     "金曜 20:00 トライアルリール「40代のカラダ図鑑」＋ストーリーズ（月曜投稿の保存版リマインド）"
   ],
-  "next_index": 2,
-  "next_slot": "2026-11-09T20:00:00+09:00",
-  "prepared": [
-    {
-      "slot": "2026-11-09T20:00:00+09:00",
-      "status": "予約済み",
-      "prepared_at": "2026-11-07（土）代表の指示で前倒し制作",
-      "category": "姿勢",
-      "theme": "背すじを伸ばして座った人は、背中を丸めて座った人より、人前でのスピーチ課題で自己評価と気分が高く恐れが少なかった（姿勢と気持ちの関係。10-19の呼吸・過去の骨盤/頭の重さ/股関節とは別の切り口）",
-      "evidence": "Nair S, Sagar M, Sollers J 3rd, Consedine N, Broadbent E. Do slumped and upright postures affect stress responses? A randomized trial. Health Psychol 2015;34(6):632-641. doi:10.1037/hea0000146（PMID 25222091。qigonginstitute.org の抄録転載で確認：74人を背すじを伸ばす／丸める座位に無作為割付、理学療法用テープで保持、カバーストーリーあり、読み課題とTrierの社会的ストレス・スピーチ課題。伸ばした群で自己評価・覚醒・気分が高く恐れが少ない、丸めた群でスピーチの否定的感情語と一人称単数が多い。伸ばした群は脈圧が高い。PubMed本体は取得できず、参加者の性別・年齢・国の詳細は抄録で未確認〈ニュージーランドは著者所属のAuckland大学の記録による〉。PubPeerにコメントがあるが内容は読めず未確認）",
-      "folder": "posts/rapre/2026-11-09_uprightposture",
-      "format": "carousel+story（Instagram＋Facebookページ）",
-      "send_to": "大事な打ち合わせや発表の前に、緊張しやすい同年代の友人",
-      "keyword": "猫背",
-      "metricool_ids": [
-        420325446,
-        420325458
-      ],
-      "note": "日曜の実行は、Metricoolで2件（通常投稿・ストーリーズ、20:00、draftではない）を確認したら、この内容を log に移して prepared から外し、next_index=3（健康）、next_slot=2026-11-12T20:00:00+09:00 に進める。新規生成・再予約はしない。 2026-11-08 08:06、代表の指示（Facebookへの同時投稿）により2件に facebook を追加。更新でidが 419817747/419817755 から 420325446/420325458 に変わった（uuidは同じ）。 ／2026-11-08 08:06：手順書の2026-11-07改定（Facebook同時投稿）に合わせ、予約2件の providers を instagram＋facebook に更新（更新APIは404を返したが反映済み、idは420325446・420325458に変更）。その間に作った Facebook のみの予約2件（420326168 通常投稿・420326164 ストーリーズ）は重複のため下書き（draft）に変更済み。公開されないので数えない。Metricool上で削除してよい。"
-    }
-  ],
+  "next_index": 3,
+  "next_slot": "2026-11-12T20:00:00+09:00",
+  "prepared": [],
   "log": [
     {
       "slot": "2026-10-12T08:00:00+09:00",
@@ -139,6 +121,22 @@
         416343974,
         416344002
       ]
+    },
+    {
+      "slot": "2026-11-09T20:00:00+09:00",
+      "prepared_at": "2026-11-07（土）代表の指示で前倒し制作",
+      "category": "姿勢",
+      "theme": "背すじを伸ばして座った人は、背中を丸めて座った人より、人前でのスピーチ課題で自己評価と気分が高く恐れが少なかった（姿勢と気持ちの関係。10-19の呼吸・過去の骨盤/頭の重さ/股関節とは別の切り口）",
+      "evidence": "Nair S, Sagar M, Sollers J 3rd, Consedine N, Broadbent E. Do slumped and upright postures affect stress responses? A randomized trial. Health Psychol 2015;34(6):632-641. doi:10.1037/hea0000146（PMID 25222091。qigonginstitute.org の抄録転載で確認：74人を背すじを伸ばす／丸める座位に無作為割付、理学療法用テープで保持、カバーストーリーあり、読み課題とTrierの社会的ストレス・スピーチ課題。伸ばした群で自己評価・覚醒・気分が高く恐れが少ない、丸めた群でスピーチの否定的感情語と一人称単数が多い。伸ばした群は脈圧が高い。PubMed本体は取得できず、参加者の性別・年齢・国の詳細は抄録で未確認〈ニュージーランドは著者所属のAuckland大学の記録による〉。PubPeerにコメントがあるが内容は読めず未確認）",
+      "folder": "posts/rapre/2026-11-09_uprightposture",
+      "format": "carousel+story（Instagram＋Facebookページ）",
+      "send_to": "大事な打ち合わせや発表の前に、緊張しやすい同年代の友人",
+      "keyword": "猫背",
+      "metricool_ids": [
+        420325446,
+        420325458
+      ],
+      "note": "2026-11-08 19:50の日曜実行で、Metricoolの予約2件（420325446 通常投稿・420325458 ストーリーズ、20:00、instagram＋facebook、draftではない、PENDING）を確認。Facebookのみの重複2件（420326168・420326164）は下書きのまま（数えない）。前倒し制作（2026-11-07）、Facebook追加（2026-11-08 08:06）。"
     }
   ],
   "past_themes_before_automation": {
@@ -168,7 +166,7 @@
       "空間設計と自律神経"
     ]
   },
-  "next_format": "carousel",
+  "next_format": "reel",
   "metrics": [
     {
       "note": "2026-01-01〜10-12の25投稿（Metricool）: 保存・シェア・コメントすべて0、投稿経由のフォロー計3。フィードのリーチ27〜109、リールの3秒視聴率7.8〜35.1%、平均視聴1.7〜5.0秒。フォロワー288。新ルールの比較の基準値。"
