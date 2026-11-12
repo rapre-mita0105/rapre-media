@@ -416,7 +416,7 @@
       "note": "代表から伝えられた紹介でのお問い合わせ・ご来店の数だけを記録する。2026-10-13時点で記録なし。"
     }
   ],
-  "next_trial_slot": "2026-11-13T20:00:00+09:00",
+  "next_trial_slot": "2026-11-20T20:00:00+09:00",
   "discovery_series": "40代のカラダ図鑑 / BODY NOTE（金曜トライアルリール。6カテゴリーの順番とは別枠）",
   "discovery_log": [
     {
@@ -457,6 +457,20 @@
         417577627,
         417577647
       ]
+    },
+    {
+      "slot": "2026-11-13T20:00:00+09:00",
+      "format": "trial_reel+story（保存版リマインド：2026-11-09_uprightposture。ストーリーズは instagram＋facebook）",
+      "theme": "眠りについたあとに目が覚めている時間（中途覚醒）は、30歳ごろから10年ごとに約10分ずつ長くなる。深い眠りの割合もゆるやかに減る（10-12の睡眠とお肌のバリア機能とは別の切り口：年齢と眠りの構造）",
+      "send_to": "「最近、夜中に目が覚めるようになった」と話す同年代の友人",
+      "keyword": "夜中に目が覚める",
+      "evidence": "Ohayon MM, Carskadon MA, Guilleminault C, Vitiello MV. Meta-analysis of quantitative sleep parameters from childhood to old age in healthy individuals. Sleep 2004;27(7):1255-1273（PMID 15586779。med.upenn.edu 掲載の本文PDFで確認：65研究・5〜102歳の健康な3,577人、終夜ポリソムノグラフィーまたはアクチグラフィー。成人で総睡眠時間・睡眠効率・徐波睡眠の割合が年齢とともに低下、WASOは増加。本文「WASO consistently increased about 10 minutes per decade of age from 30 years」。性別の解析で関連は男女ほぼ同じ。対象のスクリーニングの質で効果量が変わると著者が記載。記述的な研究のまとめで縦断ではない。PubMedのページ本体は取得できず）／参考：健康長寿ネット「高齢者の睡眠」（2023-03-08更新）で、加齢により深いノンレム睡眠が減り途中覚醒が増え眠りが浅くなる旨を確認",
+      "folder": "posts/rapre/2026-11-13_nightwaking",
+      "metricool_ids": [
+        425517338,
+        425517355
+      ],
+      "note": "2026-11-12 19:53の木曜実行で予約2件（トライアルリール instagram のみ・ストーリーズ instagram＋facebook、20:00、draftではない、PENDING）を読み戻して確認。"
     }
   ]
 }
