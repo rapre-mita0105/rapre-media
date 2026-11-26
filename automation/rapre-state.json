@@ -644,7 +644,7 @@
       "note": "代表から伝えられた紹介でのお問い合わせ・ご来店の数だけを記録する。2026-10-13時点で記録なし。"
     }
   ],
-  "next_trial_slot": "2026-11-27T20:00:00+09:00",
+  "next_trial_slot": "2026-12-04T20:00:00+09:00",
   "discovery_series": "40代のカラダ図鑑 / BODY NOTE（金曜トライアルリール。6カテゴリーの順番とは別枠）",
   "discovery_log": [
     {
@@ -713,6 +713,20 @@
         434047293
       ],
       "note": "2026-11-19 19:56の木曜実行で予約2件（トライアルリール instagram のみ・shareTrialAutomatically=false、ストーリーズ instagram＋facebook、20:00、draftではない、PENDING）を読み戻して確認。"
+    },
+    {
+      "slot": "2026-11-27T20:00:00+09:00",
+      "format": "trial_reel+story（保存版リマインド：2026-11-23_water。ストーリーズは instagram＋facebook）",
+      "theme": "「50歳で半分の人が、髪の半分以上が白髪」という通説に対し、世界調査では50歳で髪の半分以上が白髪の人は6〜23%。地域・生まれつきの髪の色で差があり、アジア系・アフリカ系は同年代のヨーロッパ系より少なめ（過去テーマに髪・白髪はなし：見た目の年齢変化の実際の割合）",
+      "send_to": "「白髪が増えてきた」と気にしている同年代の友人",
+      "keyword": "白髪",
+      "evidence": "Panhard S, Lozano I, Loussouarn G. Greying of the human hair: a worldwide survey, revisiting the '50' rule of thumb. Br J Dermatol 2012;167(4):865-873. doi:10.1111/j.1365-2133.2012.11095.x（書誌は ouci.dntb.gov.ua で確認、抄録は同ページに無し）／Cosmetics Design Europe 2012-10-02の記事で確認：L'Oréalの研究、健康な男女4,192人、専門家が標準見本と比較して判定、50歳で半分以上が白髪の人は世界で6〜23%（地域と生まれつきの髪の色による）、アジア系・アフリカ系は同年代のヨーロッパ系より少ない、45〜65歳の74%に白髪／Acer E ほか An Bras Dermatol 2020;95(4):439-446（PMC7335883 本文）で、Panhardらが6〜23%と報告した旨を確認。限界：横断調査、目視判定、化粧品会社による研究。Panhard本文・抄録は直接読めていない。",
+      "folder": "posts/rapre/2026-11-27_greyhair",
+      "metricool_ids": [
+        442937465,
+        442937480
+      ],
+      "note": "2026-11-26 19:52の木曜実行で予約2件（トライアルリール instagram のみ・shareTrialAutomatically=false、ストーリーズ instagram＋facebook、20:00、draftではない、PENDING）を読み戻して確認。"
     }
   ]
 }
